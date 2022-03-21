@@ -8,6 +8,7 @@ const name = "Your Name";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }: any) {
+  console.log("home", home);
   return (
     <div className={styles.container}>
       <Head>
@@ -28,14 +29,6 @@ export default function Layout({ children, home }: any) {
       <header className={styles.header}>
         {home ? (
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (

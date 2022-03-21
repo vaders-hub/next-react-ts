@@ -23,7 +23,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     return getLayout(<Component {...pageProps} />);
   } else {
     return (
-      <Layout>
+      <Layout home>
         <Component {...pageProps} />
       </Layout>
     );
