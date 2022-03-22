@@ -2,7 +2,7 @@
   "name": "next-react-ts",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3002",
+    "dev": "env-cmd -f .env.development next dev -p 3002",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

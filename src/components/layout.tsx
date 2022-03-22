@@ -1,14 +1,13 @@
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/layout.module.scss";
 import utilStyles from "../styles/utils.module.css";
-import Link from "next/link";
+import CustHeader from "@/components/common/Header";
 
-const name = "Your Name";
-export const siteTitle = "Next.js Sample Website";
+export const siteTitle = "Tour Guide";
 
 export default function Layout({ children, home }: any) {
-  console.log("home", home);
   return (
     <div className={styles.container}>
       <Head>
@@ -27,46 +26,7 @@ export default function Layout({ children, home }: any) {
         <meta name="twitter:card" content="summary_large_image" />
         <title>Tour Guide</title>
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <div className={styles.drawer}>
-              <ul>
-                <li><Link href="/">home</Link></li>
-                <li><Link href="/sub">join</Link></li>
-                <li><Link href="/">cuisine</Link></li>
-                <li><Link href="/">activity</Link></li>
-                <li><Link href="/">guest book</Link></li>
-              </ul>
-              <div className={styles.selectLang}>
-                <button>En</button>
-                <button>Dt</button>
-                <button>Fr</button>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
+      <CustHeader />
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
