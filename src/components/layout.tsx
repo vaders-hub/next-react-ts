@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/layout.module.css";
+import styles from "../styles/layout.module.scss";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 
@@ -25,11 +25,25 @@ export default function Layout({ children, home }: any) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <title>Tour Guide</title>
       </Head>
       <header className={styles.header}>
         {home ? (
           <>
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <div className={styles.drawer}>
+              <ul>
+                <li><Link href="/">home</Link></li>
+                <li><Link href="/sub">join</Link></li>
+                <li><Link href="/">cuisine</Link></li>
+                <li><Link href="/">activity</Link></li>
+                <li><Link href="/">guest book</Link></li>
+              </ul>
+              <div className={styles.selectLang}>
+                <button>En</button>
+                <button>Dt</button>
+                <button>Fr</button>
+              </div>
+            </div>
           </>
         ) : (
           <>

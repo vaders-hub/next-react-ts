@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Layout2 from "@components/layout2";
-import NestedLayout from "@components/layout-nested";
+import Layout2 from "@/components/layout-sub";
+import NestedLayout from "@/components/layout-nested";
 
 const About = () => {
   return <div>about nested</div>;
