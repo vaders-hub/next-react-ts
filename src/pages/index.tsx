@@ -23,12 +23,4 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-// Home.getLayout = function getLayout(page: any) {
-//   return (
-//     <Layout>
-//       <div>{page}</div>
-//     </Layout>
-//   );
-// };
-
 export default Home;

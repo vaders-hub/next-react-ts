@@ -10,7 +10,7 @@ type StateTypes = {
 };
 
 const initialState = {
-  selectedLang: "en",
+  selectedLang: "fr",
 };
 
 const SET_LANG = "SET_LANG";

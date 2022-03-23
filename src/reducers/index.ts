@@ -7,7 +7,7 @@ import lang from "./lang";
 const rootReducer = combineReducers({
   root,
   extra,
-  lang
+  lang,
 });
 
 export default rootReducer;
