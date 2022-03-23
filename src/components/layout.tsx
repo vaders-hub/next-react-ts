@@ -27,7 +27,7 @@ export default function Layout({ children, home }: any) {
         <title>Tour Guide</title>
       </Head>
       <CustHeader />
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">

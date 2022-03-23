@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "@/styles/layout.module.scss";
 import { useState } from "react";
 import menu from "src/routes";
+import path from "path";
 
 export default function Header() {
   const [mp, setMp] = useState(true);
@@ -20,7 +21,9 @@ export default function Header() {
             {menu.map((page, i) => {
               return (
                 <li key={i}>
-                  <Link href={page.path}>{page.name}</Link>
+                  <Link href={page.path}>
+                    <a onClick={(e) => onClickMenu()}>{page.name}</a>
+                  </Link>
                 </li>
               );
             })}
@@ -31,6 +34,7 @@ export default function Header() {
           <button>Dt</button>
           <button>Fr</button>
         </div>
+        <div className={mp ? styles.closed : styles.dim} onClick={onClickMenu}></div>
       </header>
     </>
   );
