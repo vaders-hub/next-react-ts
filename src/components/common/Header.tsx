@@ -15,7 +15,7 @@ export default function Header() {
   const setLangs = (lan: string) => {
     dispatch(setLang(lan));
   };
-  const langs = ["en", "dt", "fr"];
+  const langs = ["en", "de", "fr"];
   return (
     <>
       <header className={styles.header}>
