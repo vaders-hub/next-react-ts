@@ -1,38 +1,35 @@
-import { delay, put, takeEvery, ForkEffect } from "redux-saga/effects";
+import { delay, put, takeEvery, ForkEffect } from 'redux-saga/effects'
 
 type ActionTypes = {
-  type: string;
-  payload: string;
-};
+  type: string
+  payload: string
+}
 
 type StateTypes = {
-  selectedLang: string;
-};
+  selectedLang: string
+}
 
 const initialState = {
-  selectedLang: "fr",
-};
+  selectedLang: 'fr',
+}
 
-const SET_LANG = "SET_LANG";
+const SET_LANG = 'SET_LANG'
 
 export const setLang = (payload: string): ActionTypes => ({
   type: SET_LANG,
   payload,
-});
+})
 
-const lang = (
-  state: StateTypes = initialState,
-  action: ActionTypes
-): StateTypes => {
+const lang = (state: StateTypes = initialState, action: ActionTypes): StateTypes => {
   switch (action.type) {
     case SET_LANG:
       return {
         ...state,
         selectedLang: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default lang;
+export default lang
