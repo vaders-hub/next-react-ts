@@ -20,7 +20,7 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <div className={styles.drawer}>
-          <div>
+          <div className={styles.menu}>
             <button onClick={onClickMenu}>menu {mp}</button>
           </div>
           <ul className={mp ? styles.closed : styles.open}>
@@ -38,7 +38,7 @@ export default function Header() {
         <div className={styles.selectLang}>
           {langs.map((lan, idx) => {
             return (
-              <button key={idx} onClick={(e) => setLangs(lan)}>
+              <button key={idx} onClick={(e) => setLangs(lan)} className={styles[lan]}>
                 {lan}
               </button>
             );
