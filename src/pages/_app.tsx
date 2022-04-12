@@ -15,6 +15,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { IntlProvider } from "react-intl";
 import Layout from "@/components/layout";
 import { useLangSet } from "src/lib/stateUtils";
+import ReactGA from 'src/lib/ga'
 import "../styles/globals.css";
 
 import type { ReactElement, ReactNode } from "react";
@@ -56,6 +57,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
           messages={message}
           onError={myCustomErrorFunction}
         >
+          <ReactGA />
           <Component {...pageProps} />
         </IntlProvider>
       </ApolloProvider>
@@ -69,6 +71,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
           onError={myCustomErrorFunction}
         >
           <Layout home>
+          <ReactGA />
             <Component {...pageProps} />
           </Layout>
         </IntlProvider>

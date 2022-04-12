@@ -1,13 +1,7 @@
 import type { NextPage } from "next";
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
-import type { ReactElement, ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import utilStyles from "../styles/utils.module.css";
-import Alert from "../components/alert";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

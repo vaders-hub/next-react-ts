@@ -50,6 +50,7 @@
 .selectLang {
   float:right;
   margin: .2rem .5rem 0 0;
+  overflow:hidden;
   button {
     width: 18px;
     height: 18px;
@@ -57,7 +58,7 @@
     border: none;
     border-radius: 100%;
     background: none;
-    text-indent:-100rem;
+    text-indent:100rem;
   }
   button.en {
     background:url('../assets/icon/gb.svg') #ffffff center no-repeat;

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { setLang } from "src/reducers/lang";
 import menu from "src/routes";
-import path from "path";
 import styles from "@/styles/layout.module.scss";
 
 export default function Header() {
@@ -16,6 +15,7 @@ export default function Header() {
     dispatch(setLang(lan));
   };
   const langs = ["en", "de", "fr"];
+  
   return (
     <>
       <header className={styles.header}>
