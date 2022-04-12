@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // experimental: {
-  //   removeConsole: {
-  //     exclude: ["error"],
-  //   },
-  // },
+  async rewrites() {
+    return [
+      {
+        source: '/api',
+        destination: 'https://localhost:443/'
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;

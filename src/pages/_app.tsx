@@ -1,5 +1,12 @@
 import type { NextPage } from "next";
 import App, { AppContext, AppProps } from "next/app";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
 import { Provider, useSelector } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import { wrapper } from "../store";
@@ -21,6 +28,11 @@ type AppPropsWithLayout = AppProps & {
   store: any;
 };
 
+const client = new ApolloClient({
+  uri: 'https://localhost:443/api/graphql',
+  cache: new InMemoryCache()
+});
+
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const [message, selectedLang, setMessageData] = useLangSet();
 
@@ -38,25 +50,29 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   if (Component.getLayout) {
     const getLayout = Component.getLayout ?? ((page) => page);
     return getLayout(
-      <IntlProvider
-        locale={selectedLang}
-        messages={message}
-        onError={myCustomErrorFunction}
-      >
-        <Component {...pageProps} />
-      </IntlProvider>
+      <ApolloProvider client={client}>
+        <IntlProvider
+          locale={selectedLang}
+          messages={message}
+          onError={myCustomErrorFunction}
+        >
+          <Component {...pageProps} />
+        </IntlProvider>
+      </ApolloProvider>
     );
   } else {
     return (
-      <IntlProvider
-        locale={selectedLang}
-        messages={message}
-        onError={myCustomErrorFunction}
-      >
-        <Layout home>
-          <Component {...pageProps} />
-        </Layout>
-      </IntlProvider>
+      <ApolloProvider client={client}>
+        <IntlProvider
+          locale={selectedLang}
+          messages={message}
+          onError={myCustomErrorFunction}
+        >
+          <Layout home>
+            <Component {...pageProps} />
+          </Layout>
+        </IntlProvider>
+      </ApolloProvider>
     );
   }
 };
