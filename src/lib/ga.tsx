@@ -1,5 +1,5 @@
 import Script from 'next/script'
-export default function () {
+export default () => {
   return (
     <>
       <Script

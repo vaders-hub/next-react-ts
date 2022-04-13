@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
 
@@ -6,14 +9,34 @@ type NextPageWithLayout = NextPage & {
 }
 
 const Join: NextPageWithLayout = () => {
+  const dispatch = useDispatch()
+  const [inputs, setInputs] = useState({
+    memid: '',
+    mempw: '',
+  })
+
+  const { memid, mempw } = inputs
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
+    const { value, name } = e.target
+    setInputs({
+      ...inputs,
+      [name]: value,
+    })
+  }
+
+  const onRegister = async (): Promise<any> => {
+    // dispatch(register(memid, mempw));
+  }
   return (
     <>
       <section>Join</section>
       <section>
-        <input type="text" placeholder="id" />
-        <input type="password" placeholder="password" />
-        <input type="password" placeholder="password" />
-        <button>Join</button>
+        <input type="text" name="memid" placeholder="id" onChange={onChange} value={memid} />
+        <input type="password" name="mempw" placeholder="pw" onChange={onChange} value={mempw} />
+        <button type="button" onClick={onRegister}>
+          register
+        </button>
       </section>
     </>
   )

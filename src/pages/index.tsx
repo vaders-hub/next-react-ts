@@ -1,34 +1,27 @@
-import type { NextPage } from 'next'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+import { useEffect } from 'react'
 import { FormattedMessage } from 'react-intl'
+import gqlUtil from 'src/lib/gqlUtil'
+import { GET_BBS } from 'src/schema'
 import utilStyles from '../styles/utils.module.css'
 
 import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
-const GET_BBS = gql`
-  {
-    queryBBS {
-      title
-    }
-  }
-`
-
 const Home: NextPageWithLayout = () => {
-  const { loading, error, data } = useQuery(GET_BBS)
+  const data = gqlUtil(GET_BBS)
 
-  if (error) return <h1>Something went wrong!</h1>
-  if (loading) return <h1>Loading...</h1>
-  console.log('HOME..', data)
+  useEffect(() => {}, [])
+
   return (
     <>
       <FormattedMessage id="app.content" defaultMessage="Learn React" />
       <section className={utilStyles.headingMd}></section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>INDEX PAGE</section>
+      <p>{data.queryBBS ? data.queryBBS.title : ''}</p>
     </>
   )
 }
