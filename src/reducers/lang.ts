@@ -1,4 +1,4 @@
-import { delay, put, takeEvery, ForkEffect } from 'redux-saga/effects'
+import initialState from '../stores'
 
 type ActionTypes = {
   type: string
@@ -7,10 +7,6 @@ type ActionTypes = {
 
 type StateTypes = {
   selectedLang: string
-}
-
-const initialState = {
-  selectedLang: 'fr',
 }
 
 const SET_LANG = 'SET_LANG'

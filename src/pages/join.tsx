@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { register } from 'src/sagas/sagaMember'
 
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
@@ -26,7 +27,7 @@ const Join: NextPageWithLayout = () => {
   }
 
   const onRegister = async (): Promise<any> => {
-    // dispatch(register(memid, mempw));
+    dispatch(register(memid, mempw))
   }
   return (
     <>

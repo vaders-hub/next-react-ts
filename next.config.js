@@ -2,13 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
-    return [
-      {
-        source: '/api',
-        destination: 'https://localhost:443/'
-      },
-    ]
+    if (process.env.NODE_ENV !== 'production') {
+      return [
+        {
+          source: '/api/:path*',
+          destination: 'https://localhost:443/api/:path*',
+        },
+      ]
+    }
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

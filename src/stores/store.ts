@@ -25,9 +25,9 @@ const makeStore = (initialState: any) => {
   if (isClient) {
     const { persistReducer } = require('redux-persist')
     const persistConfig = {
-      key: 'root',
+      key: 'member',
       storage,
-      whitelist: ['root'],
+      whitelist: ['member'],
     }
 
     store = createStore(

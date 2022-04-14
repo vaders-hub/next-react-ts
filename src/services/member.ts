@@ -1,35 +1,35 @@
-import apis from "../plugins/apis";
+import apis from 'src/lib/apis'
 
 export interface MemberResponse {
-  data?: string;
+  data?: string
 }
 
 export const onRegister = async (
   memid: string,
-  mempw: string
+  mempw: string,
 ): Promise<MemberResponse | undefined> => {
   const result = await apis({
-    url: "/members/signup",
-    method: "post",
+    url: '/api/members/signup',
+    method: 'post',
     data: {
-      memid: memid,
-      mempw: mempw,
+      memid,
+      mempw,
     },
-  });
-  if (result) return result.data as Promise<MemberResponse>;
-};
+  })
+  if (result) return result.data as Promise<MemberResponse>
+}
 
 export const onSignin = async (
   memid: string,
-  mempw: string
+  mempw: string,
 ): Promise<MemberResponse | undefined> => {
   const result = await apis({
-    url: "/members/signin",
-    method: "post",
+    url: '/api/members/signin',
+    method: 'post',
     data: {
-      memid: memid,
-      mempw: mempw,
+      memid,
+      mempw,
     },
-  });
-  if (result) return result.data as Promise<MemberResponse>;
-};
+  })
+  if (result) return result.data as Promise<MemberResponse>
+}

@@ -57,6 +57,7 @@ function* signInSaga(action: any) {
 }
 
 function* registerSaga(action: Action) {
+  console.log('registerSaga', action)
   try {
     const { memid, mempw }: any = action
     const result: ResponseGenerator = yield call(onRegister, memid, mempw)
@@ -65,7 +66,7 @@ function* registerSaga(action: Action) {
   }
 }
 
-export function* membersSaga(): any {
+export function* membersSaga() {
   yield takeEvery(memberActions.SIGN_INFO, signInSaga)
   yield takeEvery(memberActions.REGISTER, registerSaga)
 }
