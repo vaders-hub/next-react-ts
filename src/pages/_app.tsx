@@ -24,7 +24,7 @@ type AppPropsWithLayout = AppProps & {
 }
 
 const client = new ApolloClient({
-  uri: 'https://localhost:443/api/graphql',
+  uri: 'https://localhost:443/graphql',
   cache: new InMemoryCache(),
 })
 

@@ -9,8 +9,8 @@ export const onRegister = async (
   mempw: string,
 ): Promise<MemberResponse | undefined> => {
   const result = await apis({
-    url: '/api/members/signup',
-    method: 'post',
+    url: '/api/bbs/read',
+    method: 'get',
     data: {
       memid,
       mempw,

@@ -1,5 +1,5 @@
 import type { NextFetchEvent, NextRequest } from "next/server";
 
-export function middleware(req: NextRequest, ev: NextFetchEvent) {
+export function middleware(app:any, req: NextRequest, ev: NextFetchEvent) {
   //   return new Response("Hello, world!");
 }
