@@ -27,7 +27,6 @@ apis.interceptors.request.use(
 )
 apis.interceptors.response.use(
   (config: ResponseGenerator) => {
-    console.log('response config', config)
     if (config.data && config.data.accessToken) acTkn = config.data.accessToken
     return config
   },

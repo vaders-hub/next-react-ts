@@ -3,12 +3,12 @@ import { AllEffect, ForkEffect, all } from 'redux-saga/effects'
 
 import member, { membersSaga } from './sagaMember'
 import board, { boardSaga } from './sagaBoard'
-import lang from './lang'
+import selectedLang from './lang'
 
 const rootReducer = combineReducers({
   board,
   member,
-  lang,
+  selectedLang,
 })
 
 export function* rootSaga(): Generator<

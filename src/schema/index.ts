@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 const GET_BBS = gql`
   {
     queryBBS {
-      title
+      code
     }
   }
 `

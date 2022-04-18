@@ -15,18 +15,16 @@ const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
   }
   return applyMiddleware(...middleware)
 }
-
+export let store: any
 const makeStore = (initialState: any) => {
-  let store: any
-
   const isClient = typeof window !== 'undefined'
 
   if (isClient) {
     const { persistReducer } = require('redux-persist')
     const persistConfig = {
-      key: 'member',
+      key: 'selectedLang',
       storage,
-      whitelist: ['member'],
+      whitelist: ['selectedLang'],
     }
 
     store = createStore(

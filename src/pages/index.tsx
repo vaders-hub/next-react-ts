@@ -21,7 +21,7 @@ const Home: NextPageWithLayout = () => {
       <FormattedMessage id="app.content" defaultMessage="Learn React" />
       <section className={utilStyles.headingMd}></section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>INDEX PAGE</section>
-      <p>{data.queryBBS ? data.queryBBS.title : ''}</p>
+      <p>{data.queryBBS ? data.queryBBS.code : ''}</p>
     </>
   )
 }

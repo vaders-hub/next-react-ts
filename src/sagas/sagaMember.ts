@@ -66,7 +66,6 @@ export function* membersSaga() {
 }
 
 const member = (state: any = initialState.member, action: Action): Action => {
-  console.log('member', action)
   switch (action.type) {
     case memberActions.SIGN_INFO:
       return {
@@ -75,7 +74,6 @@ const member = (state: any = initialState.member, action: Action): Action => {
         mempw: action.mempw,
       }
     case memberActions.SIGN_IN:
-      console.log('??', action.payload)
       return {
         ...state,
         signedIn: action.payload.code === '1111' ? true : false,
@@ -83,7 +81,6 @@ const member = (state: any = initialState.member, action: Action): Action => {
     case memberActions.CLEAR_INFO:
       return {
         ...state,
-        memid: '',
         mempw: '',
       }
     case memberActions.SIGN_OUT:

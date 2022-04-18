@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchList } from 'src/sagas/sagaBoard'
-import { writeBBS } from 'src/services/board'
+import { writeBBS, deleteBBS } from 'src/services/board'
 import Input from '../components/forms/Input'
 
 import type { NextPage } from 'next'
-import type { ReactElement, ReactNode } from 'react'
+import type { ReactElement, ReactNode, MouseEventHandler } from 'react'
 import type { State } from 'src/interface/state'
 import type { BoardResponse } from 'src/services/board'
 
@@ -48,6 +48,13 @@ const Board: NextPageWithLayout = () => {
     }
   }
 
+  const onDelete = async (id?: number): Promise<void> => {
+    const result = await deleteBBS(id!)
+    if (result) {
+      loadBBS()
+    }
+  }
+
   return (
     <>
       <section>Board</section>
@@ -59,9 +66,9 @@ const Board: NextPageWithLayout = () => {
         </button>
         <ul>
           {bbsList.map(
-            (data: BoardResponse, idx: number): React.ReactNode => (
-              <li key={idx}>
-                {data.title} <button>del</button>
+            (data: BoardResponse): React.ReactNode => (
+              <li key={data.bbs_id}>
+                {data.bbs_id} {data.title} {data.body} <button onClick={() => onDelete(data.bbs_id)}>del</button>
               </li>
             ),
           )}

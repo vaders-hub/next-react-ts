@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-type StateTypes = {
-  lang: { selectedLang: string }
-}
+type StateTypes = { selectedLang: string }
+
 type GetJson = {
   [key: string]: () => Promise<Record<string, unknown>>
 }
@@ -18,7 +17,7 @@ const usePrevious = (value: number): any => {
 }
 
 const useLangSet = (): MessageData => {
-  const selectedLang: string = useSelector((state: StateTypes) => state.lang.selectedLang)
+  const selectedLang: string = useSelector((state: StateTypes) => state.selectedLang)
   const [message, setMessage] = useState<Record<string, unknown>>({})
   const messageLoader: GetJson = {
     en: () => import('src/assets/lang/en.json'),
