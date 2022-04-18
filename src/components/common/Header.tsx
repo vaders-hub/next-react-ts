@@ -1,21 +1,21 @@
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { setLang } from "src/reducers/lang";
-import menu from "src/routes";
-import styles from "@/styles/layout.module.scss";
+import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { setLang } from 'src/sagas/lang'
+import menu from 'src/routes'
+import styles from '@/styles/layout.module.scss'
 
 export default function Header() {
-  const dispatch = useDispatch();
-  const [mp, setMp] = useState(true);
+  const dispatch = useDispatch()
+  const [mp, setMp] = useState(true)
   const onClickMenu = () => {
-    mp ? setMp(false) : setMp(true);
-  };
+    mp ? setMp(false) : setMp(true)
+  }
   const setLangs = (lan: string) => {
-    dispatch(setLang(lan));
-  };
-  const langs = ["en", "de", "fr"];
-  
+    dispatch(setLang(lan))
+  }
+  const langs = ['en', 'de', 'fr']
+
   return (
     <>
       <header className={styles.header}>
@@ -31,7 +31,7 @@ export default function Header() {
                     <a onClick={(e) => onClickMenu()}>{page.name}</a>
                   </Link>
                 </li>
-              );
+              )
             })}
           </ul>
         </div>
@@ -41,14 +41,11 @@ export default function Header() {
               <button key={idx} onClick={(e) => setLangs(lan)} className={styles[lan]}>
                 {lan}
               </button>
-            );
+            )
           })}
         </div>
-        <div
-          className={mp ? styles.closed : styles.dim}
-          onClick={onClickMenu}
-        ></div>
+        <div className={mp ? styles.closed : styles.dim} onClick={onClickMenu}></div>
       </header>
     </>
-  );
+  )
 }

@@ -6,7 +6,16 @@ export interface BoardResponse {
   body: string
 }
 
-export const onLoad = async (): Promise<BoardResponse | undefined> => {
+const writeBBS = async (payload: BoardResponse) => {
+  const result = await apis({
+    url: '/api/bbs/write',
+    method: 'post',
+    data: payload,
+  })
+  if (result) return true
+}
+
+const loadBBS = async (): Promise<BoardResponse | undefined> => {
   try {
     const result = await apis({
       url: '/api/bbs/read',
@@ -15,6 +24,8 @@ export const onLoad = async (): Promise<BoardResponse | undefined> => {
     })
     if (result) return result.data as Promise<BoardResponse>
   } catch (e) {
-    console.log('onLoad e', e)
+    console.warn(e)
   }
 }
+
+export { writeBBS, loadBBS }

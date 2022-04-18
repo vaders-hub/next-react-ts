@@ -1,9 +1,11 @@
-import { extra } from './extra'
+import { member } from './member'
+import { board } from './board'
 
-const initialState: any = {
+const rootState: any = {
   root: { no: 0, text: 'hello' },
   selectedLang: 'fr',
-  extra: { ...extra },
+  member,
+  board,
 }
 
-export default initialState
+export default rootState

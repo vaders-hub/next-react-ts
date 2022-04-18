@@ -5,7 +5,7 @@ import styles from '../styles/layout.module.scss'
 import utilStyles from '../styles/utils.module.css'
 import CustHeader from '@/components/common/Header'
 
-export const siteTitle = 'Tour Guide'
+export const siteTitle = 'Greet'
 
 export default function Layout({ children, home }: any) {
   return (
@@ -21,7 +21,7 @@ export default function Layout({ children, home }: any) {
             )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
           />
           <meta name="og:title" content={siteTitle} />
-          <title>Tour Guide</title>
+          <title>{siteTitle}</title>
         </Head>
         <CustHeader />
         <main className={styles.main}>{children}</main>

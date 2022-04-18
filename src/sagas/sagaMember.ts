@@ -1,6 +1,8 @@
 import { all, call, put, take, fork, select, takeEvery, ForkEffect } from 'redux-saga/effects'
-import { ResponseGenerator } from 'src/interface/common'
 import { onSignin, onRegister } from 'src/services/member'
+import initialState from '../stores'
+
+import { ResponseGenerator } from 'src/interface/common'
 import { Action, State } from 'src/interface/state'
 
 const memberActions = {
@@ -10,12 +12,6 @@ const memberActions = {
   CLEAR_INFO: 'CLEAR_INFO',
   SIGN_UP: 'SIGN_UP',
   REGISTER: 'REGISTER',
-}
-
-const initialState = {
-  signedIn: false,
-  memid: '',
-  mempw: '',
 }
 
 export const passAuth = (memid: string, mempw: string) => ({
@@ -45,24 +41,22 @@ function* signInSaga(action: any) {
   try {
     const { memid, mempw } = action
     const result: ResponseGenerator = yield call(onSignin, memid, mempw)
-
     yield put({
       type: memberActions.SIGN_IN,
       payload: result,
     })
     yield put(clearInfo())
   } catch (e) {
-    console.log('e', e)
+    console.warn('e', e)
   }
 }
 
 function* registerSaga(action: Action) {
-  console.log('registerSaga', action)
   try {
     const { memid, mempw }: any = action
     const result: ResponseGenerator = yield call(onRegister, memid, mempw)
   } catch (e) {
-    console.log('e', e)
+    console.warn('e', e)
   }
 }
 
@@ -71,7 +65,8 @@ export function* membersSaga() {
   yield takeEvery(memberActions.REGISTER, registerSaga)
 }
 
-const member = (state: any = initialState, action: Action): Action => {
+const member = (state: any = initialState.member, action: Action): Action => {
+  console.log('member', action)
   switch (action.type) {
     case memberActions.SIGN_INFO:
       return {
@@ -80,9 +75,10 @@ const member = (state: any = initialState, action: Action): Action => {
         mempw: action.mempw,
       }
     case memberActions.SIGN_IN:
+      console.log('??', action.payload)
       return {
         ...state,
-        signedIn: action.payload.message === '로그인 성공' ? true : false,
+        signedIn: action.payload.code === '1111' ? true : false,
       }
     case memberActions.CLEAR_INFO:
       return {

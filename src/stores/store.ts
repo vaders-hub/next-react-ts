@@ -5,8 +5,7 @@ import createSagaMiddleware from 'redux-saga'
 import { persistStore } from 'redux-persist'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import rootSaga from 'src/sagas/'
-import rootReducer from 'src/reducers'
+import rootReducer, { rootSaga } from 'src/sagas/'
 
 export const sagaMiddleware = createSagaMiddleware()
 
