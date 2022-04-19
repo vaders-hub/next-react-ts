@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchList } from 'src/sagas/sagaBoard'
+import { useMutation } from '@apollo/react-hooks'
+import { CREATE_BBS } from 'src/schema'
 import { writeBBS, deleteBBS } from 'src/services/board'
 import Input from '../components/forms/Input'
 
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode, MouseEventHandler } from 'react'
 import type { State } from 'src/interface/state'
+import { mutation } from 'src/lib/gqlUtil'
 import type { BoardResponse } from 'src/services/board'
 
 type NextPageWithLayout = NextPage & {
@@ -23,7 +26,8 @@ const Board: NextPageWithLayout = () => {
     body: '',
   })
   const { title, body } = inputs
-
+  const [createBBS, { data, loading, error }] = useMutation(CREATE_BBS)
+  // mutation(CREATE_BBS)
   useEffect(() => {
     loadBBS()
   }, [])
@@ -48,6 +52,23 @@ const Board: NextPageWithLayout = () => {
     }
   }
 
+  const onWriteGql = async (): Promise<void> => {
+    const result = await createBBS({
+      variables: {
+        payload: {
+          member_id: 'test',
+          title: 'test',
+          body: 'body',
+        },
+      },
+    })
+    console.log('result', result)
+    // if (result) {
+    //   setInputs({ title: '', body: '' })
+    //   loadBBS()
+    // }
+  }
+
   const onDelete = async (id?: number): Promise<void> => {
     const result = await deleteBBS(id!)
     if (result) {
@@ -64,11 +85,15 @@ const Board: NextPageWithLayout = () => {
         <button type="button" onClick={onWrite}>
           write
         </button>
+        <button type="button" onClick={onWriteGql}>
+          write by gql
+        </button>
         <ul>
           {bbsList.map(
             (data: BoardResponse): React.ReactNode => (
               <li key={data.bbs_id}>
-                {data.bbs_id} {data.title} {data.body} <button onClick={() => onDelete(data.bbs_id)}>del</button>
+                {data.bbs_id} {data.title} {data.body}{' '}
+                <button onClick={() => onDelete(data.bbs_id)}>del</button>
               </li>
             ),
           )}

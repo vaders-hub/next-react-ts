@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { FormattedMessage } from 'react-intl'
-import gqlUtil from 'src/lib/gqlUtil'
+import { query } from 'src/lib/gqlUtil'
 import { GET_BBS } from 'src/schema'
 import utilStyles from '../styles/utils.module.css'
 
@@ -12,16 +12,18 @@ type NextPageWithLayout = NextPage & {
 }
 
 const Home: NextPageWithLayout = () => {
-  const data = gqlUtil(GET_BBS)
+  const data = query(GET_BBS)
 
   useEffect(() => {}, [])
-
+  console.log('data', data, GET_BBS)
   return (
     <>
       <FormattedMessage id="app.content" defaultMessage="Learn React" />
       <section className={utilStyles.headingMd}></section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>INDEX PAGE</section>
-      <p>{data.queryBBS ? data.queryBBS.code : ''}</p>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        INDEX PAGE
+      </section>
+      {/* <p>{data.queryBBS ? data.queryBBS.code : ''}</p> */}
     </>
   )
 }

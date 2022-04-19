@@ -1,5 +1,5 @@
 import apis from 'src/lib/apis'
-import {store} from '../stores/store'
+import { store } from '../stores/store'
 
 export interface BoardResponse {
   bbs_id?: number
@@ -8,7 +8,9 @@ export interface BoardResponse {
 }
 
 const writeBBS = async (payload: BoardResponse) => {
-  const {member:{memid}} = store.getState()
+  const {
+    member: { memid },
+  } = store.getState()
 
   if (!memid) return
   const result = await apis({
@@ -16,14 +18,16 @@ const writeBBS = async (payload: BoardResponse) => {
     method: 'post',
     data: {
       ...payload,
-      member_id: memid
+      member_id: memid,
     },
   })
   if (result) return true
 }
 
 const deleteBBS = async (payload: number) => {
-  const {member:{memid}} = store.getState()
+  const {
+    member: { memid },
+  } = store.getState()
 
   if (!memid) return
   try {
@@ -32,7 +36,7 @@ const deleteBBS = async (payload: number) => {
       method: 'post',
       data: {
         bbs_id: payload,
-        member_id: memid
+        member_id: memid,
       },
     })
     if (result) return true

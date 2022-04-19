@@ -10,10 +10,6 @@ const bbsActions = {
   APPLY_LIST: 'APPLY_LIST',
 }
 
-// const initialState: State = {
-//   bbsList: [],
-// }
-
 export const fetchList = (): Action => ({ type: bbsActions.FETCH_LIST })
 export const applyList = (list: BoardResponse[]): Action => ({
   type: bbsActions.APPLY_LIST,

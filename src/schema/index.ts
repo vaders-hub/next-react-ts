@@ -8,5 +8,13 @@ const GET_BBS = gql`
   }
 `
 
-export { GET_BBS }
+const CREATE_BBS = gql`
+  mutation CreateBBS($payload: BBSData) {
+    createBBS(payload: $payload) {
+      code
+    }
+  }
+`
+
+export { GET_BBS, CREATE_BBS }
 export default {}
