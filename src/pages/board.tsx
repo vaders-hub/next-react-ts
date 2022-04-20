@@ -9,7 +9,6 @@ import Input from '../components/forms/Input'
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode, MouseEventHandler } from 'react'
 import type { State } from 'src/interface/state'
-import { mutation } from 'src/lib/gqlUtil'
 import type { BoardResponse } from 'src/services/board'
 
 type NextPageWithLayout = NextPage & {
@@ -27,7 +26,16 @@ const Board: NextPageWithLayout = () => {
   })
   const { title, body } = inputs
   const [createBBS, { data, loading, error }] = useMutation(CREATE_BBS)
-  // mutation(CREATE_BBS)
+
+  const params = {
+    payload: {
+      member_id: 'test',
+      title: 'test',
+      body: 'body',
+    },
+  }
+  // const data = mutation(CREATE_BBS, params)
+  // console.log('data', data)
   useEffect(() => {
     loadBBS()
   }, [])
@@ -62,11 +70,10 @@ const Board: NextPageWithLayout = () => {
         },
       },
     })
-    console.log('result', result)
-    // if (result) {
-    //   setInputs({ title: '', body: '' })
-    //   loadBBS()
-    // }
+    if (result) {
+      setInputs({ title: '', body: '' })
+      loadBBS()
+    }
   }
 
   const onDelete = async (id?: number): Promise<void> => {

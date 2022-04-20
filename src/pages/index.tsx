@@ -1,6 +1,11 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
+import {
+  DocumentNode,
+  useQuery,
+  useLazyQuery,
+  useMutation,
+} from '@apollo/react-hooks'
 import { FormattedMessage } from 'react-intl'
-import { query } from 'src/lib/gqlUtil'
 import { GET_BBS } from 'src/schema'
 import utilStyles from '../styles/utils.module.css'
 
@@ -12,10 +17,13 @@ type NextPageWithLayout = NextPage & {
 }
 
 const Home: NextPageWithLayout = () => {
-  const data = query(GET_BBS)
-
-  useEffect(() => {}, [])
-  console.log('data', data, GET_BBS)
+  const [search, { data }] = useLazyQuery(GET_BBS)
+  const fetchCall = async () => {
+    await search()
+  }
+  useEffect(() => {
+    return () => {}
+  }, [])
   return (
     <>
       <FormattedMessage id="app.content" defaultMessage="Learn React" />
@@ -23,7 +31,8 @@ const Home: NextPageWithLayout = () => {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         INDEX PAGE
       </section>
-      {/* <p>{data.queryBBS ? data.queryBBS.code : ''}</p> */}
+      <div>{data?.queryBBS ? data.queryBBS.code : ''}</div>
+      <button onClick={fetchCall}>get gql Query </button>
     </>
   )
 }
