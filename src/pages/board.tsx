@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchList } from 'src/sagas/sagaBoard'
 import { useMutation } from '@apollo/react-hooks'
@@ -15,18 +15,26 @@ type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
+interface ResetInputRef {
+  resetInputs(): void;
+}
+
+
 const Board: NextPageWithLayout = () => {
   const dispatch = useDispatch()
   const { bbsList } = useSelector((state: State) => ({
     bbsList: state.board.bbsList,
   }))
-  const [inputs, setInputs] = useState({
+  const {memid} = useSelector((state:State) => state.member)
+  const initialInputState = {
     title: '',
     body: '',
-  })
+  }
+  const [inputs, setInputs] = useState<Record<string, unknown>>(initialInputState)
   const { title, body } = inputs
   const [createBBS, { data, loading, error }] = useMutation(CREATE_BBS)
-
+  const childCompRefTitle = useRef<ResetInputRef>(null);
+  const childCompRefBody = useRef<ResetInputRef>(null);
   const params = {
     payload: {
       member_id: 'test',
@@ -34,7 +42,6 @@ const Board: NextPageWithLayout = () => {
       body: 'body',
     },
   }
-  // const data = mutation(CREATE_BBS, params)
   // console.log('data', data)
   useEffect(() => {
     loadBBS()
@@ -45,33 +52,39 @@ const Board: NextPageWithLayout = () => {
   }
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
-    const { value, name } = e.target
-    setInputs({
-      ...inputs,
-      [name]: value,
-    })
+    console.log('e', e.target.value)
+    // const { value, name } = e.target
+    // setInputs({
+    //   ...inputs,
+    //   [name]: value,
+    // })
   }
 
   const onWrite = async (): Promise<void> => {
-    const result = await writeBBS({ title, body })
-    if (result) {
-      setInputs({ title: '', body: '' })
-      loadBBS()
-    }
+    setInputs({...initialInputState })
+    childCompRefTitle.current?.resetInputs()
+    childCompRefBody.current?.resetInputs()
+    console.log('inputs', inputs)
+    return;
+    // const result = await writeBBS({ title, body })
+    // if (result) {
+    //   setInputs({ title: '', body: '' })
+    //   loadBBS()
+    // }
   }
 
   const onWriteGql = async (): Promise<void> => {
     const result = await createBBS({
       variables: {
         payload: {
-          member_id: 'test',
-          title: 'test',
-          body: 'body',
+          member_id: memid,
+          // title,
+          // body,
         },
       },
     })
     if (result) {
-      setInputs({ title: '', body: '' })
+      // setInputs({ title: '', body: '' })
       loadBBS()
     }
   }
@@ -87,8 +100,8 @@ const Board: NextPageWithLayout = () => {
     <>
       <section>Board</section>
       <section>
-        <Input type="text" name="title" onChange={onChange} value={title} />
-        <Input type="text" name="body" onChange={onChange} value={body} />
+        <Input type="text" name="title" onChange={onChange} ref={childCompRefTitle}/>
+        <Input type="text" name="body" onChange={onChange} ref={childCompRefBody}/>
         <button type="button" onClick={onWrite}>
           write
         </button>

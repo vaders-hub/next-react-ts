@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { setLang } from 'src/sagas/lang'
 import menu from 'src/routes'
 import styles from '@/styles/layout.module.scss'
@@ -11,9 +11,9 @@ export default function Header() {
   const onClickMenu = () => {
     mp ? setMp(false) : setMp(true)
   }
-  const setLangs = (lan: string) => {
+  const setLangs = useCallback((lan: string) => {
     dispatch(setLang(lan))
-  }
+  }, [])
   const langs = ['en', 'de', 'fr']
 
   return (
