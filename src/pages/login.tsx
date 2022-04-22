@@ -20,7 +20,7 @@ const Login: NextPageWithLayout = () => {
 
   const onSignin = async (): Promise<any> => {
     await dispatch(passAuth(id, pw))
-    dispatch(clearInput())
+    dispatch(clearInput('login'))
   }
 
   const onSignOut = () => {

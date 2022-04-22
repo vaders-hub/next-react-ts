@@ -11,8 +11,9 @@ export const updateInput = (e: any, name: string): Action => ({
   payload: { value: e.target.value, name },
 })
 
-export const clearInput = (): Action => ({
+export const clearInput = (inputType: string): Action => ({
   type: formActions.CLEAR_INPUT,
+  payload: inputType,
 })
 
 const form = (state: State = initialState.forms, action: Action): State => {
@@ -33,7 +34,7 @@ const form = (state: State = initialState.forms, action: Action): State => {
         ...state,
         inputs: {
           ...state.inputs,
-          login: {
+          [action.payload]: {
             id: '',
             pw: '',
           },
