@@ -1,4 +1,4 @@
-const board: any = {
+const board = {
   bbsList: [],
 }
 

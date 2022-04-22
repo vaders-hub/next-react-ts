@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { passAuth, signOut } from 'src/sagas/sagaMember'
-import Input from '../components/forms/Input'
+import { clearInput } from 'src/sagas/sagaForm'
+import StateInput from '../components/forms/stateInput'
 
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
@@ -13,24 +14,13 @@ type NextPageWithLayout = NextPage & {
 const Login: NextPageWithLayout = () => {
   const dispatch = useDispatch()
   const { member }: any = useSelector((state) => state)
+  const inputData = useSelector((state: any) => state.forms.inputs.login)
 
-  const [inputs, setInputs] = useState({
-    memid: '',
-    mempw: '',
-  })
-
-  const { memid, mempw } = inputs
-  const onChange: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
-    const { value, name } = e.target
-    setInputs({
-      ...inputs,
-      [name]: value,
-    })
-  }
+  const { id, pw } = inputData
 
   const onSignin = async (): Promise<any> => {
-    dispatch(passAuth(memid, mempw))
-    setInputs({ memid: '', mempw: '' })
+    await dispatch(passAuth(id, pw))
+    dispatch(clearInput())
   }
 
   const onSignOut = () => {
@@ -40,8 +30,8 @@ const Login: NextPageWithLayout = () => {
     <>
       <section>Login</section>
       <section>
-        <Input type="text" name="memid" onChange={onChange} value={memid} />
-        <Input type="password" name="mempw" placeholder="pw" onChange={onChange} value={mempw} />
+        <StateInput name="id" type="text" />
+        <StateInput name="pw" type="password" />
         <button type="button" onClick={onSignin}>
           sign-in
         </button>
