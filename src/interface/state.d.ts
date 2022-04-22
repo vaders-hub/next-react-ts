@@ -9,10 +9,21 @@ export type Action = {
   payload?: any
 }
 
+export type SigninAction = {
+  memid: string
+  mempw: string
+}
+
 export type State = {
-  bbsList: BoardResponse[] | undefined
+  bbsList?: BoardResponse[] | undefined
   board?: bbsList
   member?: any
+  inputs?: {
+    login?: {
+      id?: string
+      pw?: string
+    }
+  }
 }
 
 namespace State {

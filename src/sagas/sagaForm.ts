@@ -15,7 +15,7 @@ export const clearInput = (): Action => ({
   type: formActions.CLEAR_INPUT,
 })
 
-const form = (state: any = initialState.forms, action: Action): any => {
+const form = (state: State = initialState.forms, action: Action): State => {
   switch (action.type) {
     case formActions.UPDATE_INPUT:
       return {
@@ -23,7 +23,7 @@ const form = (state: any = initialState.forms, action: Action): any => {
         inputs: {
           ...state.inputs,
           login: {
-            ...state.inputs.login,
+            ...state.inputs?.login,
             [action.payload.name]: action.payload.value,
           },
         },

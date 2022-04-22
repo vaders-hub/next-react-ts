@@ -1,9 +1,18 @@
-import { all, call, put, take, fork, select, takeEvery, ForkEffect } from 'redux-saga/effects'
+import {
+  all,
+  call,
+  put,
+  take,
+  fork,
+  select,
+  takeEvery,
+  ForkEffect,
+} from 'redux-saga/effects'
 import { onSignin, onRegister } from 'src/services/member'
 import initialState from '../stores'
 
 import { ResponseGenerator } from 'src/interface/common'
-import { Action, State } from 'src/interface/state'
+import { Action, SigninAction, State } from 'src/interface/state'
 
 const memberActions = {
   SIGN_INFO: 'SIGN_INFO',
@@ -30,14 +39,13 @@ export const clearInfo = () => ({
   type: memberActions.CLEAR_INFO,
 })
 export const getMember = (state: State): State => state.member
-
 export const register = (memid: string, mempw: string) => ({
   type: memberActions.REGISTER,
   memid,
   mempw,
 })
 
-function* signInSaga(action: any) {
+function* signInSaga(action: SigninAction) {
   try {
     const { memid, mempw } = action
     const result: ResponseGenerator = yield call(onSignin, memid, mempw)
