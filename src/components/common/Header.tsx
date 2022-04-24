@@ -21,7 +21,7 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.drawer}>
           <div className={styles.menu}>
-            <button onClick={onClickMenu}>menu {mp}</button>
+            <button className="menu" onClick={onClickMenu}>menu {mp}</button>
           </div>
           <ul className={mp ? styles.closed : styles.open}>
             {menu.map((page, i) => {

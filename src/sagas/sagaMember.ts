@@ -45,7 +45,7 @@ export const register = (memid: string, mempw: string) => ({
   mempw,
 })
 
-function* signInSaga(action: SigninAction) {
+function* signInSaga(action: any) {
   try {
     const { memid, mempw } = action
     const result: ResponseGenerator = yield call(onSignin, memid, mempw)
