@@ -27,9 +27,9 @@ const form = (state: State = initialState.forms, action: Action): State => {
         ...state,
         inputs: {
           ...state.inputs,
-          [action.payload.formName as string]: {
-            ...(state.inputs![action.payload.formName as string] as object),
-            [action.payload.name as string]: action.payload?.value,
+          [action.payload?.formName as string]: {
+            ...(state.inputs![action.payload?.formName as string] as object),
+            [action.payload?.name as string]: action.payload?.value,
           },
         },
       }
@@ -38,7 +38,7 @@ const form = (state: State = initialState.forms, action: Action): State => {
         ...state,
         inputs: {
           ...state.inputs,
-          [action.payload.inputType as string]: {
+          [action.payload?.inputType as string]: {
             id: '',
             pw: '',
           },
