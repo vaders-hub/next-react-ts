@@ -11,6 +11,7 @@ export type Action = {
     formName?: string
     name?: string
     inputType?: string
+    code?: string
   }
 }
 
@@ -26,6 +27,7 @@ export type State = {
   inputs?: {
     [key: string | number]: unknown
   }
+  forms?: any
 }
 
 namespace State {

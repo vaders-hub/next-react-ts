@@ -84,7 +84,7 @@ const member = (state: any = initialState.member, action: Action): Action => {
     case memberActions.SIGN_IN:
       return {
         ...state,
-        signedIn: action.payload.code === '1111' ? true : false,
+        signedIn: action.payload?.code === '1111' ? true : false,
       }
     case memberActions.CLEAR_INFO:
       return {

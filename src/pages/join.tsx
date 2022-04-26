@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { register } from 'src/sagas/sagaMember'
 import { clearInput } from 'src/sagas/sagaForm'
 import StateInput from '../components/forms/stateInput'
+import Button from '../components/forms/Button'
 
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
@@ -33,9 +34,7 @@ const Join: NextPageWithLayout = () => {
       <section>
         <StateInput form="join" name="id" type="text" />
         <StateInput form="join" name="pw" type="password" />
-        <button type="button" onClick={onRegister}>
-          register
-        </button>
+        <Button name="Register" onButtonClick={onRegister}/>
       </section>
     </>
   )
