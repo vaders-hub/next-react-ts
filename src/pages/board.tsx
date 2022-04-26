@@ -45,7 +45,6 @@ const Board: NextPageWithLayout = () => {
   }
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
-    console.log('e', e.target.value)
     const { value, name } = e.target
     setInputs({
       ...inputs,

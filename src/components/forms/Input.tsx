@@ -12,7 +12,7 @@ interface CustomInputProps {
 const Input = forwardRef<ResetInputRef, CustomInputProps>(
   (props, ref): React.ReactElement => {
     const { type, name } = props
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState<string>('')
     const emitChage = (e: ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value)
       props.onChange(e)

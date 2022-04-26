@@ -15,7 +15,6 @@ const Login: NextPageWithLayout = () => {
   const dispatch = useDispatch()
   const { member }: any = useSelector((state) => state)
   const inputData = useSelector((state: any) => state.forms.inputs.login)
-
   const { id, pw } = inputData
 
   const onSignin = async (): Promise<any> => {
@@ -26,12 +25,19 @@ const Login: NextPageWithLayout = () => {
   const onSignOut = () => {
     dispatch(signOut())
   }
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearInput('login'))
+    }
+  }, [])
+
   return (
     <>
       <section>Login</section>
       <section>
-        <StateInput name="id" type="text" />
-        <StateInput name="pw" type="password" />
+        <StateInput form="login" name="id" type="text" />
+        <StateInput form="login" name="pw" type="password" />
         <button type="button" onClick={onSignin}>
           sign-in
         </button>

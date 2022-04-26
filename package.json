@@ -10,6 +10,7 @@
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3002 cypress",
+    "test:e2e": "start-server-and-test dev http-get://localhost:3002 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3002 cypress:headless",
     "test": "start-server-and-test start http://localhost:3002 cypress:headless"
   },

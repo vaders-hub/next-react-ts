@@ -6,7 +6,12 @@ export type Action = {
   memid?: string
   mempw?: string
   data?: string
-  payload?: any
+  payload?: {
+    value?: string
+    formName?: string
+    name?: string
+    inputType?: string
+  }
 }
 
 export type SigninAction = {
@@ -19,10 +24,7 @@ export type State = {
   board?: bbsList
   member?: any
   inputs?: {
-    login?: {
-      id?: string
-      pw?: string
-    }
+    [key: string | number]: unknown
   }
 }
 

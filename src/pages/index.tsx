@@ -17,22 +17,19 @@ type NextPageWithLayout = NextPage & {
 }
 
 const Home: NextPageWithLayout = () => {
-  // const [search, { data }] = useLazyQuery(GET_BBS)
+  const [search, { data }] = useLazyQuery(GET_BBS)
   const fetchCall = async () => {
-    // await search()
+    await search()
   }
-  useEffect(() => {
-    console.log('index>>>>')
-    return () => {}
-  }, [])
+
   return (
     <>
-      {/* <FormattedMessage id="app.content" defaultMessage="Learn React" /> */}
+      <FormattedMessage id="app.content" defaultMessage="Learn React" />
       <section className={utilStyles.headingMd}></section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         INDEX PAGE
       </section>
-      {/* <div>{data?.queryBBS ? data.queryBBS.code : ''}</div> */}
+      <div>{data?.queryBBS ? data.queryBBS.code : ''}</div>
       <button onClick={fetchCall}>get gql Query </button>
     </>
   )

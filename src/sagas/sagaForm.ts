@@ -6,14 +6,18 @@ const formActions = {
   CLEAR_INPUT: 'CLEAR_INPUT',
 }
 
-export const updateInput = (e: any, name: string): Action => ({
+export const updateInput = (
+  formName: string,
+  e: any,
+  name: string,
+): Action => ({
   type: formActions.UPDATE_INPUT,
-  payload: { value: e.target.value, name },
+  payload: { value: e.target.value, formName, name },
 })
 
 export const clearInput = (inputType: string): Action => ({
   type: formActions.CLEAR_INPUT,
-  payload: inputType,
+  payload: { inputType },
 })
 
 const form = (state: State = initialState.forms, action: Action): State => {
@@ -23,9 +27,9 @@ const form = (state: State = initialState.forms, action: Action): State => {
         ...state,
         inputs: {
           ...state.inputs,
-          login: {
-            ...state.inputs?.login,
-            [action.payload.name]: action.payload.value,
+          [action.payload.formName as string]: {
+            ...(state.inputs![action.payload.formName as string] as object),
+            [action.payload.name as string]: action.payload?.value,
           },
         },
       }
@@ -34,7 +38,7 @@ const form = (state: State = initialState.forms, action: Action): State => {
         ...state,
         inputs: {
           ...state.inputs,
-          [action.payload]: {
+          [action.payload.inputType as string]: {
             id: '',
             pw: '',
           },
