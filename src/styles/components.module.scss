@@ -4,22 +4,24 @@ $hover-color: rgb(255, 153, 0);
 
 .defaultInput {
   margin: 0 0.1rem;
-  padding: 0.3rem 0.5rem;
-  border: 0.1rem solid $input-color;
+  padding: 0.35rem 0.5rem;
+  border: 0.05rem solid $input-color;
+  transition: all .3s;
 }
 
 .defaultInput:focus {
   outline: none !important;
-  border: 0.1rem solid $hover-color;
+  border: 0.05rem solid $hover-color;
   box-shadow: 0 0 10px $input-color;
 }
 
 .defaultBtn {
   margin: 0 0.1rem;
-  padding: 0.4rem 0.5rem;
+  padding: 0.41rem 0.5rem;
   border: none;
   color: #fff;
   background-color: $btn-color;
+  transition: all .3s;
 }
 
 .defaultBtn:hover {

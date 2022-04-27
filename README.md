@@ -1,11 +1,23 @@
-## React + Next
+# next-react-ts
 
-Project Boilerplate
+React SPA on NEXT.js framework that can send and receive rest api data from "node-graphql-mysql" repo
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Technologies Used
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+React, Next
+GraphQL Client
+Typescript
+Cypress
+
+#### app
+
+RUN
+
+1. npm install
+2. npm run dev
+
+Test
+
+1.  npm run cypress
+
+

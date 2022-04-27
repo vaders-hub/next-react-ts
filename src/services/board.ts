@@ -6,6 +6,7 @@ export interface BoardResponse {
   member_id?: string
   title: string
   body: string
+  created_at: string
 }
 
 const writeBBS = async (payload: BoardResponse) => {
