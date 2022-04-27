@@ -4,7 +4,7 @@ import { AllEffect, ForkEffect, all } from 'redux-saga/effects'
 import member, { membersSaga } from './sagaMember'
 import board, { boardSaga } from './sagaBoard'
 import forms from './sagaForm'
-import selectedLang from './lang'
+import selectedLang from './sagaLang'
 
 const rootReducer = combineReducers({
   board,

@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { State } from 'src/interface/state'
 import { updateInput } from 'src/sagas/sagaForm'
 
+import compStyles from 'src/styles/components.module.scss'
+
 const Input = (props: any): React.ReactElement => {
   const dispatch = useDispatch()
   const { form, type, name } = props
@@ -13,6 +15,7 @@ const Input = (props: any): React.ReactElement => {
 
   return (
     <input
+      className={compStyles.defaultInput}
       name={name}
       type={type}
       value={inputData[name]}

@@ -1,4 +1,4 @@
-import styles from "../styles/layout.module.css";
+import styles from 'src/styles/layout.module.scss'
 
 export default function Popup({ children }: any) {
   return (
@@ -6,5 +6,5 @@ export default function Popup({ children }: any) {
       <p>POPUP</p>
       <main>{children}</main>
     </div>
-  );
+  )
 }

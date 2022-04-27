@@ -3,6 +3,7 @@ import { store } from '../stores/store'
 
 export interface BoardResponse {
   bbs_id?: number
+  member_id?: string
   title: string
   body: string
 }

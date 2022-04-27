@@ -15,13 +15,15 @@ type NextPageWithLayout = NextPage & {
 
 const Login: NextPageWithLayout = () => {
   const dispatch = useDispatch()
-  const { member }: State = useSelector((state) => state)
+  const {
+    member: { signedIn },
+  }: State = useSelector((state) => state)
   const inputData = useSelector((state: State) => state.forms.inputs.login)
   const { id, pw } = inputData
 
   const onSignIn = async (): Promise<any> => {
     await dispatch(passAuth(id, pw))
-    dispatch(clearInput('login'))
+    await dispatch(clearInput('login'))
   }
 
   const onSignOut = () => {
@@ -32,16 +34,23 @@ const Login: NextPageWithLayout = () => {
     return () => {
       dispatch(clearInput('login'))
     }
-  }, [])
+  }, [signedIn])
 
   return (
     <>
-      <section>Login</section>
+      <section>Login {signedIn}</section>
       <section>
-        <StateInput form="login" name="id" type="text" />
-        <StateInput form="login" name="pw" type="password" />
-        <Button name="Log-in" onButtonClick={onSignIn}/>
-        <Button name="Log-out" onButtonClick={onSignOut}/>
+        {!signedIn ? (
+          <div>
+            <StateInput form="login" name="id" type="text" />
+            <StateInput form="login" name="pw" type="password" />
+            <Button name="Log-in" onButtonClick={onSignIn} />
+          </div>
+        ) : (
+          <div>
+            <Button name="Log-out" onButtonClick={onSignOut} />
+          </div>
+        )}
       </section>
     </>
   )

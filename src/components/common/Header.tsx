@@ -1,12 +1,17 @@
 import Link from 'next/link'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState, useCallback } from 'react'
-import { setLang } from 'src/sagas/lang'
+import { setLang } from 'src/sagas/sagaLang'
 import menu from 'src/routes'
 import styles from '@/styles/layout.module.scss'
 
+import type { State } from 'src/interface/state'
+
 export default function Header() {
   const dispatch = useDispatch()
+  const {
+    member: { signedIn },
+  }: State = useSelector((state) => state)
   const [mp, setMp] = useState(true)
   const onClickMenu = () => {
     mp ? setMp(false) : setMp(true)
@@ -15,16 +20,19 @@ export default function Header() {
     dispatch(setLang(lan))
   }, [])
   const langs = ['en', 'de', 'fr']
+  const availableMenu = menu.filter((v) => v.auth || (!v.auth && !signedIn))
 
   return (
     <>
       <header className={styles.header}>
         <div className={styles.drawer}>
           <div className={styles.menu}>
-            <button className="menu" onClick={onClickMenu}>menu {mp}</button>
+            <button className="menu" onClick={onClickMenu}>
+              menu {mp}
+            </button>
           </div>
           <ul className={mp ? styles.closed : styles.open}>
-            {menu.map((page, i) => {
+            {availableMenu.map((page, i) => {
               return (
                 <li key={i}>
                   <Link href={page.path}>
@@ -38,13 +46,20 @@ export default function Header() {
         <div className={styles.selectLang}>
           {langs.map((lan, idx) => {
             return (
-              <button key={idx} onClick={(e) => setLangs(lan)} className={styles[lan]}>
+              <button
+                key={idx}
+                onClick={(e) => setLangs(lan)}
+                className={styles[lan]}
+              >
                 {lan}
               </button>
             )
           })}
         </div>
-        <div className={mp ? styles.closed : styles.dim} onClick={onClickMenu}></div>
+        <div
+          className={mp ? styles.closed : styles.dim}
+          onClick={onClickMenu}
+        ></div>
       </header>
     </>
   )

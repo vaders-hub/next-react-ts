@@ -1,11 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/layout.module.css";
-import utilStyles from "../styles/utils.module.css";
-import Link from "next/link";
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/layout.module.scss'
+import utilStyles from '../styles/utils.module.scss'
+import Link from 'next/link'
 
-const name = "Your Name";
-export const siteTitle = "Next.js Sample Website";
+const name = 'Your Name'
+export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({ children, home }: any) {
   return (
@@ -19,7 +19,7 @@ export default function Layout({ children, home }: any) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
+            siteTitle,
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
         <meta name="og:title" content={siteTitle} />
@@ -69,5 +69,5 @@ export default function Layout({ children, home }: any) {
         </div>
       )}
     </div>
-  );
+  )
 }

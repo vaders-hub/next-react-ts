@@ -1,0 +1,27 @@
+$input-color: rgb(0, 119, 255);
+$btn-color: rgb(0, 119, 255);
+$hover-color: rgb(255, 153, 0);
+
+.defaultInput {
+  margin: 0 0.1rem;
+  padding: 0.3rem 0.5rem;
+  border: 0.1rem solid $input-color;
+}
+
+.defaultInput:focus {
+  outline: none !important;
+  border: 0.1rem solid $hover-color;
+  box-shadow: 0 0 10px $input-color;
+}
+
+.defaultBtn {
+  margin: 0 0.1rem;
+  padding: 0.4rem 0.5rem;
+  border: none;
+  color: #fff;
+  background-color: $btn-color;
+}
+
+.defaultBtn:hover {
+  background-color: $hover-color;
+}

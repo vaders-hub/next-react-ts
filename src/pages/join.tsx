@@ -18,6 +18,7 @@ const Join: NextPageWithLayout = () => {
   const { id, pw } = inputData
 
   const onRegister = async (): Promise<any> => {
+    if (!id || !pw) return false
     await dispatch(register(id, pw))
     dispatch(clearInput('join'))
   }
@@ -34,7 +35,7 @@ const Join: NextPageWithLayout = () => {
       <section>
         <StateInput form="join" name="id" type="text" />
         <StateInput form="join" name="pw" type="password" />
-        <Button name="Register" onButtonClick={onRegister}/>
+        <Button name="Register" onButtonClick={onRegister} />
       </section>
     </>
   )

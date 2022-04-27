@@ -1,6 +1,12 @@
 import type { NextPage } from 'next'
 import App, { AppContext, AppProps } from 'next/app'
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client'
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from '@apollo/client'
 import { Provider, useSelector } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import { wrapper } from 'src/stores/store'
@@ -10,7 +16,7 @@ import { IntlProvider } from 'react-intl'
 import Layout from '@/components/layout'
 import { useLangSet } from 'src/lib/stateUtils'
 import ReactGA from 'src/lib/ga'
-import '../styles/globals.css'
+import '../styles/globals.scss'
 
 import type { ReactElement, ReactNode } from 'react'
 
@@ -46,7 +52,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     const getLayout = Component.getLayout ?? ((page) => page)
     return getLayout(
       <ApolloProvider client={client}>
-        <IntlProvider locale={selectedLang} messages={message} onError={myCustomErrorFunction}>
+        <IntlProvider
+          locale={selectedLang}
+          messages={message}
+          onError={myCustomErrorFunction}
+        >
           <ReactGA />
           <Component {...pageProps} />
         </IntlProvider>
@@ -55,7 +65,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   } else {
     return (
       <ApolloProvider client={client}>
-        <IntlProvider locale={selectedLang} messages={message} onError={myCustomErrorFunction}>
+        <IntlProvider
+          locale={selectedLang}
+          messages={message}
+          onError={myCustomErrorFunction}
+        >
           <Layout home>
             <ReactGA />
             <Component {...pageProps} />

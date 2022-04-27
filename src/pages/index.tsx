@@ -7,7 +7,7 @@ import {
 } from '@apollo/react-hooks'
 import { FormattedMessage } from 'react-intl'
 import { GET_BBS } from 'src/schema'
-import utilStyles from '../styles/utils.module.css'
+import utilStyles from '../styles/utils.module.scss'
 
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
