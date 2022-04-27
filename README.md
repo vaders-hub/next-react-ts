@@ -4,7 +4,8 @@ React SPA on NEXT.js framework that can send and receive rest api data from "nod
 
 ## Technologies Used
 
-React, Next
+React, Next, Redux, Redux SAGA
+SCSS
 GraphQL Client
 Typescript
 Cypress
@@ -19,5 +20,3 @@ RUN
 Test
 
 1.  npm run cypress
-
-

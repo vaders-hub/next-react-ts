@@ -97,7 +97,9 @@ const Board: NextPageWithLayout = () => {
 
   return (
     <>
-      <section>Board</section>
+      <section>
+        Board <button onClick={loadBBS}>reload</button>
+      </section>
       <section>
         <Input
           type="text"
@@ -120,9 +122,6 @@ const Board: NextPageWithLayout = () => {
           repos={bbsList}
           onDelete={onDelete}
         />
-        <div>
-          <button onClick={loadBBS}>get bbs</button>
-        </div>
       </section>
     </>
   )

@@ -6,7 +6,7 @@ $hover-color: rgb(255, 153, 0);
   margin: 0 0.1rem;
   padding: 0.35rem 0.5rem;
   border: 0.05rem solid $input-color;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .defaultInput:focus {
@@ -21,9 +21,48 @@ $hover-color: rgb(255, 153, 0);
   border: none;
   color: #fff;
   background-color: $btn-color;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .defaultBtn:hover {
   background-color: $hover-color;
+}
+
+.boardList {
+  padding: 0;
+  list-style: none;
+  li {
+    p {
+      margin: 0;
+    }
+    margin: 0 0 1rem 0;
+    p.titleArea {
+      margin: 0;
+      .delBtn {
+        position: relative;
+        top: -0.2rem;
+        border: 0;
+        width: 0.8rem;
+        height: 0.8rem;
+        margin: 0 0 0 0.3rem;
+        padding: 0;
+        background-color: $btn-color;
+        > p {
+          color: #fff;
+          margin: -0.1rem 0 0 0;
+          font-weight: 100;
+          font-size: 0.6rem;
+        }
+      }
+    }
+    p.date {
+      margin-bottom: 0.5rem;
+      line-height: 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.strong {
+  font-weight: 500;
 }
