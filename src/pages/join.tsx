@@ -5,6 +5,8 @@ import { clearInput } from 'src/sagas/sagaForm'
 import StateInput from '../components/forms/stateInput'
 import Button from '../components/forms/Button'
 
+import styles from '@/styles/layout.module.scss'
+
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
 
@@ -31,7 +33,9 @@ const Join: NextPageWithLayout = () => {
 
   return (
     <>
-      <section>Join</section>
+      <section>
+        <h3 className={styles.title}>Join</h3>
+      </section>
       <section>
         <StateInput form="join" name="id" type="text" />
         <StateInput form="join" name="pw" type="password" />

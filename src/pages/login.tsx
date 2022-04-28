@@ -5,6 +5,8 @@ import { clearInput } from 'src/sagas/sagaForm'
 import StateInput from '../components/forms/stateInput'
 import Button from '../components/forms/Button'
 
+import styles from '@/styles/layout.module.scss'
+
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
 import type { State } from 'src/interface/state'
@@ -38,7 +40,9 @@ const Login: NextPageWithLayout = () => {
 
   return (
     <>
-      <section>Login {signedIn}</section>
+      <section>
+        <h3 className={styles.title}>Login</h3>
+      </section>
       <section>
         {!signedIn ? (
           <div>

@@ -9,6 +9,8 @@ import Input from 'src/components/forms/Input'
 import Button from 'src/components/forms/Button'
 import BoardList from 'src/components/board/List'
 
+import styles from '@/styles/layout.module.scss'
+
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode, MouseEventHandler } from 'react'
 import type { State } from 'src/interface/state'
@@ -98,7 +100,10 @@ const Board: NextPageWithLayout = () => {
   return (
     <>
       <section>
-        Board <button onClick={loadBBS}>reload</button>
+        <h3 className={styles.title}>Board</h3>
+        <button className={styles.refresh} onClick={loadBBS}>
+          reload
+        </button>
       </section>
       <section>
         <Input

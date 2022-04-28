@@ -109,3 +109,22 @@ $menu-color: rgb(0, 119, 255);
 .inVisibleEl {
   display: none;
 }
+
+h3.title {
+  display: inline-block;
+  margin: 0 0.2rem 0.5rem 0;
+  font-weight: 500;
+}
+
+button.refresh {
+  position: relative;
+  top: -0.1rem;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  background: url('../assets/icon/refresh.svg') #ffffff left 0 top 0 no-repeat;
+  background-size: cover;
+  text-indent: -100rem;
+}
