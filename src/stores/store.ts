@@ -34,8 +34,16 @@ const makeStore = (initialState: any) => {
     )
 
     store.__PERSISTOR = persistStore(store)
+
+    if (window.Cypress) {
+      window.store = store
+    }
   } else {
-    store = createStore(rootReducer, initialState, bindMiddleware([sagaMiddleware]))
+    store = createStore(
+      rootReducer,
+      initialState,
+      bindMiddleware([sagaMiddleware]),
+    )
   }
 
   store.sagaTask = sagaMiddleware.run(rootSaga)

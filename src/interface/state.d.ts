@@ -30,6 +30,13 @@ export type State = {
   forms?: any
 }
 
+declare global {
+  interface Window {
+    Cypress: any
+    store: any
+  }
+}
+
 namespace State {
   export const other = 1
 }

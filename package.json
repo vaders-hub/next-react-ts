@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start -p 3002",
     "lint": "next lint",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run",
+    "cy": "cypress open",
+    "cy:run": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3002 cypress",
     "test:e2e": "start-server-and-test dev http-get://localhost:3002 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3002 cypress:headless"
@@ -16,6 +16,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@apollo/react-hooks": "^4.0.0",
+    "@cypress/react": "^5.12.4",
     "@types/cors": "^2.8.12",
     "@types/react-redux": "^7.1.22",
     "axios": "^0.26.1",
