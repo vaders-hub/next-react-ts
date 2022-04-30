@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p 3002",
     "lint": "next lint",
-    "cy": "cypress open",
+    "cy": "env-cmd -f .env.development cypress open",
     "cy:run": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3002 cypress",
     "test:e2e": "start-server-and-test dev http-get://localhost:3002 cypress",
