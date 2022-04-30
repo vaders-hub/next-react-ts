@@ -24,14 +24,14 @@ describe('visit login page', () => {
       memid: 'test',
       mempw: '1234',
     }).then((response) => {
-      // expect(response.status).to.eq(200)
-      // it('should have the right initial state', () => {
+      expect(response.status).to.eq(200)
+
       cy.window()
         .its('store')
         .invoke('getState')
-        .its('member.signedIn')
-        .should('equal', true)
-      // })
+        .then((state) => {
+          expect(state.member.signedIn).equal(false, true)
+        })
     })
   })
 })

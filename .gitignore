@@ -44,4 +44,13 @@ yarn-error.log*
 
 package-lock.json
 
-/cypress/videos
+cypress/videos
+cypress.env.json
+cypress.meta.json
+cypress/logs/
+cypress/videos/*
+cypress/screenshots/*
+cypress/integration/_generated/*
+cypress/data/migration/generated/*.csv
+cypress/fixtures/example.json
+cypress/build/*
