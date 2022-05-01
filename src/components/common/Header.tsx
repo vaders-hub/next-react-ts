@@ -1,11 +1,18 @@
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useCallback } from 'react'
+import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { setLang } from 'src/sagas/sagaLang'
 import menu from 'src/routes'
 import styles from '@/styles/layout.module.scss'
 
 import type { State } from 'src/interface/state'
+
+const IntMenu = ({ name }: Record<string, unknown>) => {
+  const intl = useIntl()
+
+  return <span>{intl.formatMessage({ id: `menu.${name}` })}</span>
+}
 
 export default function Header() {
   const dispatch = useDispatch()
@@ -36,7 +43,9 @@ export default function Header() {
               return (
                 <li key={i}>
                   <Link href={page.path}>
-                    <a onClick={(e) => onClickMenu()}>{page.name}</a>
+                    <a onClick={(e) => onClickMenu()}>
+                      <IntMenu name={page.name} />
+                    </a>
                   </Link>
                 </li>
               )
