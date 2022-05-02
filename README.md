@@ -9,6 +9,8 @@ React SPA on NEXT.js framework that can send and receive rest api data from "nod
 3. GraphQL Client
 4. Typescript
 5. Cypress
+6. react-intl
+7. Google Analytics
 
 ### Contributors
 
