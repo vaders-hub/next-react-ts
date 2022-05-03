@@ -1,6 +1,8 @@
 {
-  "app.header": "Edit<code>{fileName}</code> js and save to reload",
   "app.content": "Hello",
-  "app.channel.plug": "Tutorial brought to you by {blogName}",
-  "app.plural": "{amount, plural, =0 {no languages} one {# one language} few {# several languages} many {# lots of languages} other {# wrong fromat}}"
+  "menu.home": "Home",
+  "menu.join": "Join",
+  "menu.login": "Login",
+  "menu.guestbook": "Guestbook",
+  "message.user": "Welcome, {name}!"
 }

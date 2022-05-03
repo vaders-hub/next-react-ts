@@ -1,6 +1,8 @@
 {
-  "app.header": "قم بتحرير الملفات وحفظها لإعادة<code>{fileName}</code> التحميل",
   "app.content": "Hallo",
-  "app.channel.plug": "يقدم لك البرنامج التعليمي {blogName}",
-  "app.plural": "{amount, plural, =0 {no languages} one {# one language} few {# several languages} many {# lots of languages} other {# wrong fromat}}"
+  "menu.home": "Heimat",
+  "menu.join": "Beitreten",
+  "menu.login": "Anmeldung",
+  "menu.guestbook": "gästebuch",
+  "message.user": "Herzlich willkommen, {name}!"
 }

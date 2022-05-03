@@ -24,10 +24,9 @@ const Home: NextPageWithLayout = () => {
 
   return (
     <>
-      <FormattedMessage id="app.content" defaultMessage="Learn React" />
       <section className={utilStyles.headingMd}></section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        INDEX PAGE
+        <FormattedMessage id="message.user" values={{ name: 'John' }} />
       </section>
       <div>{data?.queryBBS ? data.queryBBS.code : ''}</div>
       <button onClick={fetchCall}>get gql Query </button>

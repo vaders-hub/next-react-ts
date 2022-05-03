@@ -1,6 +1,6 @@
 export default [
-  { name: 'Home', path: '/', auth: true },
-  { name: 'Join', path: '/join', auth: false },
-  { name: 'Login', path: '/login', auth: true },
-  { name: 'Guestbook', path: '/board', auth: true },
+  { name: 'home', path: '/', auth: true },
+  { name: 'join', path: '/join', auth: false },
+  { name: 'login', path: '/login', auth: true },
+  { name: 'guestbook', path: '/board', auth: true },
 ]
