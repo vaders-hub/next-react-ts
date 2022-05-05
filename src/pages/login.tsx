@@ -49,12 +49,12 @@ const Login: NextPageWithLayout = () => {
           <div>
             <StateInput form="login" name="id" type="text" />
             <StateInput form="login" name="pw" type="password" />
-            <SearchedList/>
             <Button name="Log-in" onButtonClick={onSignIn} />
           </div>
         ) : (
           <div>
             <Button name="Log-out" onButtonClick={onSignOut} />
+            <SearchedList />
           </div>
         )}
       </section>
