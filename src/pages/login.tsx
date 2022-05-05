@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { passAuth, signOut } from 'src/sagas/sagaMember'
 import { clearInput } from 'src/sagas/sagaForm'
 import StateInput from '../components/forms/stateInput'
+import SearchedList from 'src/components/common/SearchComplete'
 import Button from '../components/forms/Button'
 
 import styles from '@/styles/layout.module.scss'
@@ -48,6 +49,7 @@ const Login: NextPageWithLayout = () => {
           <div>
             <StateInput form="login" name="id" type="text" />
             <StateInput form="login" name="pw" type="password" />
+            <SearchedList/>
             <Button name="Log-in" onButtonClick={onSignIn} />
           </div>
         ) : (

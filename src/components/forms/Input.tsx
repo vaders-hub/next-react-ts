@@ -1,4 +1,4 @@
-import { useState, forwardRef, useImperativeHandle, ChangeEvent } from 'react'
+import { useState, forwardRef, useImperativeHandle, ChangeEvent, ReactElement} from 'react'
 
 import compStyles from 'src/styles/components.module.scss'
 
@@ -13,7 +13,7 @@ interface CustomInputProps {
 }
 
 const Input = forwardRef<ResetInputRef, CustomInputProps>(
-  (props, ref): React.ReactElement => {
+  (props, ref): ReactElement => {
     const { type, name, placeholder } = props
     const [inputValue, setInputValue] = useState<string>('')
     const emitChage = (e: ChangeEvent<HTMLInputElement>) => {
