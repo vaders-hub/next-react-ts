@@ -1,5 +1,7 @@
 {
   "name": "next-react-ts",
+  "version": "0.0.1",
+  "description": "next based react app template",
   "private": true,
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
@@ -13,10 +15,18 @@
     "test:e2e": "start-server-and-test dev http-get://localhost:3002 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3002 cypress:headless"
   },
+  "keywords": [
+    "next.js",
+    "react.js"
+  ],
+  "author": "Hyunbae, Jeon",
+  "license": "MIT",
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@apollo/react-hooks": "^4.0.0",
     "@cypress/react": "^5.12.4",
+    "@react-rxjs/core": "^0.9.6",
+    "@react-rxjs/utils": "^0.9.5",
     "@types/cors": "^2.8.12",
     "@types/lodash": "^4.14.182",
     "@types/react-redux": "^7.1.22",
@@ -47,6 +57,7 @@
     "redux-saga": "^1.1.3",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
+    "rxjs": "^7.5.5",
     "save-dev": "0.0.1-security",
     "styled-components": "^5.3.5",
     "typesafe-actions": "^5.1.0",
@@ -70,5 +81,8 @@
   "resolutions": {
     "@types/react": "17.0.38",
     "styled-components": "^5"
+  },
+  "engines": {
+    "node": "^16.14.2"
   }
 }
