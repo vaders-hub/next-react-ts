@@ -1,11 +1,17 @@
 import { Constants as C } from './constants'
 import { Action } from 'redux'
 
+const chatActions = {
+  START_REQUEST_TEXT: 'START_REQUEST_TEXT'
+}
+
+export const startRequestText = ():any => ({type:chatActions.START_REQUEST_TEXT})
+
 export interface StartRequestTextAction extends Action<C.START_REQUEST_TEXT> {}
 
-export const startRequestText: () => StartRequestTextAction = () => ({
-  type: C.START_REQUEST_TEXT,
-})
+// export const startRequestText: () => StartRequestTextAction = () => ({
+//   type: C.START_REQUEST_TEXT,
+// })
 
 export interface FinishRequestTextAction
   extends Action<typeof C.FINISH_REQUEST_TEXT> {

@@ -1,39 +1,31 @@
-import { Reducer, combineReducers } from 'redux'
-
+import { Reducer } from 'redux'
+import initialState from '../stores'
 import { SimpleTextState, AllActions } from 'src/epics/types'
 import { Constants as C } from 'src/epics/constants'
-import { RootState } from 'src/epics/types'
 
-export const simpleTextReducer: Reducer<SimpleTextState, AllActions> = (
-  state = { isLoading: false },
+const simpleTextReducer: Reducer<SimpleTextState, AllActions> = (
+  state = initialState.chat,
   action,
 ) => {
   switch (action.type) {
     case C.START_REQUEST_TEXT:
       return {
         ...state,
-        isLoading: true,
-        isCancelled: false,
+        data: []
       }
     case C.FINISH_REQUEST_TEXT:
       return {
         ...state,
-        text: action.text,
-        isLoading: false,
+        data: [{ha:'ho'}]
       }
     case C.ERROR_REQUEST_TEXT:
       return {
         ...state,
-        errorMsg: action.errorMsg,
-        isLoading: false,
+        error: action.errorMsg,
       }
     default:
       return state
   }
 }
 
-const reducers: Reducer<RootState> = combineReducers<RootState>({
-  simpleText: simpleTextReducer,
-})
-
-export default reducers
+export default simpleTextReducer

@@ -5,7 +5,7 @@ import member, { membersSaga } from './sagaMember'
 import board, { boardSaga } from './sagaBoard'
 import forms from './sagaForm'
 import selectedLang from './sagaLang'
-import chat from './sagaChat'
+// import chat from './sagaChat'
 import epic from './epicText'
 
 const rootReducer = combineReducers({
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   member,
   selectedLang,
   forms,
-  chat,
+  // chat,
   epic,
 })
 

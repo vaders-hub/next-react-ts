@@ -1,6 +1,7 @@
 import { Epic, ofType, combineEpics } from 'redux-observable'
 import { from, of } from 'rxjs'
 import { catchError, mergeMap } from 'rxjs/operators'
+import { ajax } from 'rxjs/ajax';
 import { fromFetch } from 'rxjs/fetch'
 
 import { Constants as C } from './constants'
