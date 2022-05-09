@@ -6,6 +6,7 @@ import board, { boardSaga } from './sagaBoard'
 import forms from './sagaForm'
 import selectedLang from './sagaLang'
 import chat from './sagaChat'
+import epic from './epicText'
 
 const rootReducer = combineReducers({
   board,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   selectedLang,
   forms,
   chat,
+  epic,
 })
 
 export function* rootSaga(): Generator<
