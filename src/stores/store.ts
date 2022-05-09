@@ -2,12 +2,14 @@ import { applyMiddleware, createStore, Middleware, StoreEnhancer } from 'redux'
 import storage from 'redux-persist/lib/storage'
 import { createWrapper, Context, HYDRATE } from 'next-redux-wrapper'
 import createSagaMiddleware from 'redux-saga'
+import { combineEpics, createEpicMiddleware } from 'redux-observable'
 import { persistStore } from 'redux-persist'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import rootReducer, { rootSaga } from 'src/sagas/'
 
 export const sagaMiddleware = createSagaMiddleware()
+const epicMiddleware = createEpicMiddleware()
 
 const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
   if (process.env.NODE_ENV !== 'production') {
@@ -42,7 +44,7 @@ const makeStore = (initialState: any) => {
     store = createStore(
       rootReducer,
       initialState,
-      bindMiddleware([sagaMiddleware]),
+      bindMiddleware([sagaMiddleware, epicMiddleware]),
     )
   }
 

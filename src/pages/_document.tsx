@@ -31,7 +31,7 @@ export default function MyDocument() {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <title>{siteTitle}</title>
+        {/* <title>{siteTitle}</title> */}
       </Head>
       <body>
         <Main />

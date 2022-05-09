@@ -3,4 +3,5 @@ export default [
   { name: 'join', path: '/join', auth: false },
   { name: 'login', path: '/login', auth: true },
   { name: 'guestbook', path: '/board', auth: true },
+  { name: 'chat', path: '/chat', auth: false },
 ]
