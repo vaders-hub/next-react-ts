@@ -1,7 +1,7 @@
 import { Reducer } from 'redux'
 import initialState from '../stores'
 import { SimpleTextState, AllActions } from 'src/epics/types'
-import { Constants as C } from 'src/epics/constants'
+import { Constants as C } from 'src/epics/'
 
 const simpleTextReducer: Reducer<SimpleTextState, AllActions> = (
   state = initialState.chat,

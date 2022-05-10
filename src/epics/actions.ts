@@ -1,4 +1,4 @@
-import { Constants as C } from './constants'
+import { Constants as C } from './'
 import { Action } from 'redux'
 
 export interface StartRequestTextAction extends Action<C.START_REQUEST_TEXT> {}

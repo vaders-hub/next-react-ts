@@ -1,7 +1,7 @@
 import { useEffect, useState, useLayoutEffect } from 'react'
 import { Dispatch } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
-import { startRequestText } from 'src/epics/actions'
+import { startRequestText } from 'src/epics/'
 
 import StateInput from '../components/forms/stateInput'
 import Button from '../components/forms/Button'
