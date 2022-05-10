@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useMemo, useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 type StateTypes = { selectedLang: string }
@@ -8,16 +8,18 @@ type GetJson = {
 }
 type MessageData = [{}, string, () => void]
 
-const usePrevious = (value: number): any => {
-  const ref = useRef<number>(0)
+const usePrevious = <T>(value: T): T => {
+  const ref = useRef<T>()
   useEffect(() => {
     ref.current = value
-  })
-  return ref.current
+  }, [value])
+  return <T>ref.current
 }
 
 const useLangSet = (): MessageData => {
-  const selectedLang: string = useSelector((state: StateTypes) => state.selectedLang)
+  const selectedLang: string = useSelector(
+    (state: StateTypes) => state.selectedLang,
+  )
   const [message, setMessage] = useState<Record<string, unknown>>({})
   const messageLoader: GetJson = {
     en: () => import('src/assets/lang/en.json'),

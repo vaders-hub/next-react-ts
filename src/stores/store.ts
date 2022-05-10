@@ -29,9 +29,9 @@ const makeStore = () => {
   if (isClient) {
     const { persistReducer } = require('redux-persist')
     const persistConfig = {
-      key: 'selectedLang',
+      key: 'none',
       storage,
-      whitelist: ['selectedLang'],
+      whitelist: [''],
     }
 
     store = createStore(
