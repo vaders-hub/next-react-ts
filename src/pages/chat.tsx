@@ -1,7 +1,7 @@
 import { useEffect, useState, useLayoutEffect } from 'react'
 import { Dispatch } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
-import { startRequestText } from 'src/epics/'
+import { startRequestText, fetchUsers } from 'src/epics/'
 
 import StateInput from '../components/forms/stateInput'
 import Button from '../components/forms/Button'
@@ -19,7 +19,7 @@ type NextPageWithLayout = NextPage & {
 const Chat: NextPageWithLayout = () => {
   const dispatch = useDispatch()
   const onSend = async (): Promise<any> => {
-    dispatch(startRequestText())
+    dispatch(fetchUsers('1'))
   }
 
   useEffect(() => {}, [])
