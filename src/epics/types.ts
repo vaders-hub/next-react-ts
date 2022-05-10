@@ -8,7 +8,9 @@ export interface RootState {
 }
 
 export interface SimpleTextState {
+  type?: string
   text?: string
   errorMsg?: string
-  isLoading: boolean
+  isLoading?: boolean
+  data?: {}[]
 }

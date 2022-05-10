@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Main, NextScript } from 'next/document'
+import Head from 'next/head'
 import Script from 'next/script'
 import App, { AppContext, AppProps } from 'next/app'
 import {
@@ -9,8 +10,6 @@ import {
   useQuery,
   gql,
 } from '@apollo/client'
-import { Provider, useSelector } from 'react-redux'
-import withRedux from 'next-redux-wrapper'
 import { wrapper } from 'src/stores/store'
 import { useMemo, useEffect, useLayoutEffect, useState } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -54,6 +53,9 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
           messages={message}
           onError={myCustomErrorFunction}
         >
+          <Head>
+            <title>Greet</title>
+          </Head>
           <ReactGA />
           <Component {...pageProps} />
         </IntlProvider>
@@ -67,6 +69,9 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
           messages={message}
           onError={myCustomErrorFunction}
         >
+          <Head>
+            <title>Greet</title>
+          </Head>
           <Layout home>
             <ReactGA />
             <Component {...pageProps} />

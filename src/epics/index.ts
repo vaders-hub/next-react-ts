@@ -1,7 +1,7 @@
 import { Epic, ofType, combineEpics } from 'redux-observable'
-import { from, of } from 'rxjs'
-import { catchError, mergeMap } from 'rxjs/operators'
-import { ajax } from 'rxjs/ajax';
+import { EMPTY, from, of } from 'rxjs'
+import { catchError, map, mergeMap, switchMap, takeUntil } from 'rxjs/operators'
+import { ajax } from 'rxjs/ajax'
 import { fromFetch } from 'rxjs/fetch'
 
 import { Constants as C } from './constants'
@@ -14,22 +14,29 @@ const startRequestTextEpic: Epic<AllActions, AllActions, RootState> = (
 ) =>
   action$.pipe(
     ofType(C.START_REQUEST_TEXT),
-    mergeMap(() => {
-      const REQUEST_URL: string =
-        'https://baconipsum.com/api/?type=meat?paras=200'
-
-      const sendRequest$ = fromFetch(REQUEST_URL)
-      return sendRequest$.pipe(
-        mergeMap((resp: Response) => {
-          return from(resp.text()).pipe(
-            mergeMap((text: string) => of(actions.finishRequestText(text))),
-          )
-        }),
+    switchMap((action) =>
+      ajax({
+        url: 'https://api.github.com/users?per_page=5',
+        method: 'GET',
+        // body: { email: action, password: action },
+      }).pipe(
+        map((response: any) => actions.finishRequestText(response.response)),
         catchError((error: Error) =>
           of(actions.errorRequestText(error.message)),
         ),
-      )
-    }),
+      ),
+    ),
+  )
+
+const fetchUserEpic = (action$: any) =>
+  action$.pipe(
+    ofType(C.START_REQUEST_TEXT),
+    mergeMap((action) =>
+      ajax.getJSON(`/api/users/`).pipe(
+        map((response: any) => actions.finishRequestText(response)),
+        takeUntil(action$.pipe(ofType(C.FINISH_REQUEST_TEXT))),
+      ),
+    ),
   )
 
 const rootEpic: Epic<AllActions, AllActions, RootState> =

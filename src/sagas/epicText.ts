@@ -11,12 +11,12 @@ const simpleTextReducer: Reducer<SimpleTextState, AllActions> = (
     case C.START_REQUEST_TEXT:
       return {
         ...state,
-        data: []
+        data: [],
       }
     case C.FINISH_REQUEST_TEXT:
       return {
         ...state,
-        data: [{ha:'ho'}]
+        data: [{ ha: 'ho' }],
       }
     case C.ERROR_REQUEST_TEXT:
       return {
