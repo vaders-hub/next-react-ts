@@ -22,6 +22,10 @@ const simpleTextReducer: Reducer<SimpleTextState, AllActions> = (
         ...state,
         error: action.errorMsg,
       }
+    case C.FETCH_USERS:
+      return {
+        ...state,
+      }
     case C.ADD_USERS:
       return {
         ...state,

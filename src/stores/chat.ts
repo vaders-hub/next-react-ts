@@ -2,7 +2,7 @@ const chat = {
   status: '',
   data: [],
   error: '',
-  users: ['a']
+  users: ['a'],
 }
 
 export { chat }

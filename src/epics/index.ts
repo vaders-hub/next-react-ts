@@ -8,7 +8,7 @@ import {Constants} from 'src/interface/epic'
 
 import type 
   { StartRequestTextAction, FinishRequestTextAction, ErrorRequestTextAction, FetchUserAction, AddUserAction,
-    AllActions, RootState
+    AllActions, RootState, SimpleTextState
   } from 'src/interface/epic'
 
 export const startRequestText = (): StartRequestTextAction => ({
@@ -43,7 +43,7 @@ const startRequestTextEpic: Epic<AllActions, AllActions, RootState> = (
     ofType(Constants.START_REQUEST_TEXT),
     switchMap((action) =>
       ajax({
-        url: 'https://api.github.com/users?per_page=5',
+        url: `https://api.github.com/users?per_page=5`,
         method: 'GET',
         // body: { email: action, password: action },
       }).pipe(
@@ -56,14 +56,13 @@ const startRequestTextEpic: Epic<AllActions, AllActions, RootState> = (
 const fetchUserEpic: Epic<AllActions, AllActions, RootState> = (action$) =>
   action$.pipe(
     ofType(Constants.FETCH_USERS),
-    mergeMap((action) =>
+    mergeMap((action:SimpleTextState) =>
       ajax({
-        // url: '/api/members/find?userId=5',
-        url: 'https://api.github.com/users?per_page=5',
+        url: `/api/members/finduser?memid=${action.userId}`,
         method: 'GET',
         // body: { email: action, password: action },
       }).pipe(
-        map((response: any) => addUsers(response)),
+        map((response) => addUsers(response)),
         // takeUntil(action$.pipe(ofType(Constants.FINISH_REQUEST_TEXT))),
       ),
     ),

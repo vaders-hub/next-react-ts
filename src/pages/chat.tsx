@@ -1,9 +1,9 @@
-import { useEffect, useState, useLayoutEffect } from 'react'
+import { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import { Dispatch } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { startRequestText, fetchUsers } from 'src/epics/'
 
-import StateInput from '../components/forms/stateInput'
+import Input from 'src/components/forms/Input'
 import Button from '../components/forms/Button'
 
 import styles from '@/styles/layout.module.scss'
@@ -16,10 +16,30 @@ type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
+interface ResetInputRef {
+  resetInputs(): void
+}
+
 const Chat: NextPageWithLayout = () => {
   const dispatch = useDispatch()
+  const initialInputState = {
+    memid: '',
+  }
+  const [inputs, setInputs] =
+    useState<Record<string, string>>(initialInputState)
+    const { memid } = inputs  
+  const childCompRefMemId = useRef<ResetInputRef>(null)
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
+    const { value, name } = e.target
+    setInputs({
+      ...inputs,
+      [name]: value,
+    })
+  }
   const onSend = async (): Promise<any> => {
-    dispatch(fetchUsers('1'))
+    dispatch(fetchUsers(memid))
+    childCompRefMemId.current?.resetInputs()
   }
 
   useEffect(() => {}, [])
@@ -32,9 +52,14 @@ const Chat: NextPageWithLayout = () => {
       <section>
         {
           <div>
-            <input name="message" type="text" />
-            {/* <StateInput form="login" name="message" type="text" /> */}
-            <Button name="Send" onButtonClick={onSend} />
+            <Input
+              type="text"
+              name="memid"
+              placeholder="member id"
+              onChange={onChange}
+              ref={childCompRefMemId}
+            />
+            <Button name="Search RxJS" onButtonClick={onSend} />
           </div>
         }
       </section>

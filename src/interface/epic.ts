@@ -8,7 +8,9 @@ export enum Constants {
   ADD_USERS = 'ADD_USERS'
 }
 
-export interface StartRequestTextAction extends Action<Constants.START_REQUEST_TEXT> {}
+export interface StartRequestTextAction
+  extends Action<typeof Constants.START_REQUEST_TEXT> {
+  }
 export interface FinishRequestTextAction
   extends Action<typeof Constants.FINISH_REQUEST_TEXT> {
   text: string
@@ -19,7 +21,6 @@ export interface ErrorRequestTextAction
 }
 export interface FetchUserAction
   extends Action<typeof Constants.FETCH_USERS> {
-  userId: string
 }
 export interface AddUserAction
   extends Action<typeof Constants.ADD_USERS> {
@@ -37,6 +38,7 @@ export interface SimpleTextState {
   isLoading?: boolean
   data?: {}[]
   users?: string[]
+  userId?:string
 }
 
 export type AllActions
@@ -45,3 +47,5 @@ export type AllActions
     ErrorRequestTextAction |
     FetchUserAction |
     AddUserAction
+
+
