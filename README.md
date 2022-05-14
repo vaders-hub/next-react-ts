@@ -1,10 +1,10 @@
 # next-react-ts
 
-React SPA on NEXT.js framework that can send and receive rest api data from "node-graphql-mysql" repo
+React SPA on NEXT.js framework that can send and receive rest api data from "node-graphql-mysql" repo. "node-graphql-mysql" repo should be pulled and run to see working example of api. 
 
 ### Technologies Used
 
-1. React, Next, Redux, Redux SAGA
+1. React, Next, Redux, Redux SAGA + Redux Observable
 2. SCSS
 3. GraphQL Client
 4. Typescript
