@@ -4,12 +4,18 @@ import { EMPTY, from, of } from 'rxjs'
 import { catchError, map, mergeMap, switchMap, takeUntil } from 'rxjs/operators'
 import { ajax } from 'rxjs/ajax'
 import { fromFetch } from 'rxjs/fetch'
-import {Constants} from 'src/interface/epic'
+import { Constants } from 'src/interface/epic'
 
-import type 
-  { StartRequestTextAction, FinishRequestTextAction, ErrorRequestTextAction, FetchUserAction, AddUserAction,
-    AllActions, RootState, SimpleTextState
-  } from 'src/interface/epic'
+import type {
+  StartRequestTextAction,
+  FinishRequestTextAction,
+  ErrorRequestTextAction,
+  FetchUserAction,
+  AddUserAction,
+  AllActions,
+  RootState,
+  SimpleTextState,
+} from 'src/interface/epic'
 
 export const startRequestText = (): StartRequestTextAction => ({
   type: Constants.START_REQUEST_TEXT,
@@ -30,9 +36,9 @@ export const fetchUsers = (userId: string): FetchUserAction => ({
   userId,
 })
 
-export const addUsers = (user:any): AddUserAction => ({
+export const addUsers = (user: any): AddUserAction => ({
   type: Constants.ADD_USERS,
-  user
+  user,
 })
 
 const startRequestTextEpic: Epic<AllActions, AllActions, RootState> = (
@@ -56,7 +62,7 @@ const startRequestTextEpic: Epic<AllActions, AllActions, RootState> = (
 const fetchUserEpic: Epic<AllActions, AllActions, RootState> = (action$) =>
   action$.pipe(
     ofType(Constants.FETCH_USERS),
-    mergeMap((action:SimpleTextState) =>
+    mergeMap((action: SimpleTextState) =>
       ajax({
         url: `/api/members/finduser?memid=${action.userId}`,
         method: 'GET',
@@ -68,7 +74,9 @@ const fetchUserEpic: Epic<AllActions, AllActions, RootState> = (action$) =>
     ),
   )
 
-const rootEpic: Epic<AllActions, AllActions, RootState> =
-  combineEpics(startRequestTextEpic, fetchUserEpic)
+const rootEpic: Epic<AllActions, AllActions, RootState> = combineEpics(
+  startRequestTextEpic,
+  fetchUserEpic,
+)
 
 export default rootEpic

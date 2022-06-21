@@ -5,12 +5,11 @@ export enum Constants {
   FINISH_REQUEST_TEXT = 'FINISH_REQUEST_TEXT',
   ERROR_REQUEST_TEXT = 'ERROR_REQUEST_TEXT',
   FETCH_USERS = 'FETCH_USERS',
-  ADD_USERS = 'ADD_USERS'
+  ADD_USERS = 'ADD_USERS',
 }
 
 export interface StartRequestTextAction
-  extends Action<typeof Constants.START_REQUEST_TEXT> {
-  }
+  extends Action<typeof Constants.START_REQUEST_TEXT> {}
 export interface FinishRequestTextAction
   extends Action<typeof Constants.FINISH_REQUEST_TEXT> {
   text: string
@@ -19,12 +18,11 @@ export interface ErrorRequestTextAction
   extends Action<typeof Constants.ERROR_REQUEST_TEXT> {
   errorMsg: string
 }
-export interface FetchUserAction
-  extends Action<typeof Constants.FETCH_USERS> {
+export interface FetchUserAction extends Action<typeof Constants.FETCH_USERS> {
+  userId: string
 }
-export interface AddUserAction
-  extends Action<typeof Constants.ADD_USERS> {
-  user:any
+export interface AddUserAction extends Action<typeof Constants.ADD_USERS> {
+  user: any
 }
 
 export interface RootState {
@@ -38,14 +36,12 @@ export interface SimpleTextState {
   isLoading?: boolean
   data?: {}[]
   users?: string[]
-  userId?:string
+  userId?: string
 }
 
-export type AllActions
-  = StartRequestTextAction |
-    FinishRequestTextAction |
-    ErrorRequestTextAction |
-    FetchUserAction |
-    AddUserAction
-
-
+export type AllActions =
+  | StartRequestTextAction
+  | FinishRequestTextAction
+  | ErrorRequestTextAction
+  | FetchUserAction
+  | AddUserAction

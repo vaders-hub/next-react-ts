@@ -3,6 +3,8 @@ import { Dispatch } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { startRequestText, fetchUsers } from 'src/epics/'
 
+import GenList from 'src/components/common/GenList'
+
 import Input from 'src/components/forms/Input'
 import Button from '../components/forms/Button'
 
@@ -27,7 +29,7 @@ const Chat: NextPageWithLayout = () => {
   }
   const [inputs, setInputs] =
     useState<Record<string, string>>(initialInputState)
-    const { memid } = inputs  
+  const { memid } = inputs
   const childCompRefMemId = useRef<ResetInputRef>(null)
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
@@ -42,6 +44,12 @@ const Chat: NextPageWithLayout = () => {
     childCompRefMemId.current?.resetInputs()
   }
 
+  const gendata = [
+    { id: '1', name: 'name1', nick: 'nick1' },
+    { id: '2', name: 'name2', nick: 'nick2' },
+    { id: '3', name: 'name3', nick: 'nick3' },
+  ]
+
   useEffect(() => {}, [])
 
   return (
@@ -50,18 +58,21 @@ const Chat: NextPageWithLayout = () => {
         <h3 className={styles.title}>Chat</h3>
       </section>
       <section>
-        {
-          <div>
-            <Input
-              type="text"
-              name="memid"
-              placeholder="member id"
-              onChange={onChange}
-              ref={childCompRefMemId}
-            />
-            <Button name="Search RxJS" onButtonClick={onSend} />
-          </div>
-        }
+        <div>
+          <Input
+            type="text"
+            name="memid"
+            placeholder="member id"
+            onChange={onChange}
+            ref={childCompRefMemId}
+          />
+          <Button name="Search RxJS" onButtonClick={onSend} />
+        </div>
+        <GenList
+          keyExtractor={({ id }) => id}
+          data={gendata}
+          renderItem={({ name }) => <p>{name}</p>}
+        />
       </section>
     </>
   )
